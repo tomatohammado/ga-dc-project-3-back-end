@@ -1,0 +1,61 @@
+[
+    {
+        "name": "Black Panther",
+        "year": 2018,
+        "providers": [""]
+    },
+
+    {
+        "name": "Titanic",
+        "year": 1997,
+        "providers": ["Amazon"]
+    },
+
+    {
+        "name": "The Shack",
+        "year": 2017,
+        "providers": ["Amazon"]
+    },
+
+    {
+        "name": "27 Dresses",
+        "year": 2008,
+        "providers": ["Amazon"]
+    },
+
+    {
+        "name": "The Ugly Truth",
+        "year": 2009,
+        "providers": ["Amazon"]
+    },
+
+    {
+        "name": "Talladega Nights",
+        "year": 2006,
+        "providers": ["Netflix"]
+    },
+
+    {
+        "name": "Star Wars: Rogue One",
+        "year": 2016,
+        "providers": ["Netflix"]
+    },
+
+    {
+        "name": "The Lego Batman Movie",
+        "year": 2017,
+        "providers": ["HBO"]
+    },
+
+    {
+        "name": "Superbad",
+        "year": 2007,
+        "providers": ["Hulu"]
+    },
+
+    {
+        "name": "Fences",
+        "year": 2016,
+        "providers": ["Hulu"]
+    }
+]
