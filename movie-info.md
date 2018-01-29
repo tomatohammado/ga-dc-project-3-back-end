@@ -26,10 +26,9 @@ Year:
 Provider: 
 
 ## #6
-Name: 
-Year:
-Provider: 
-
+Name: Talladega Nights
+Year: 2006
+Provider: Netflix
 ## #7
 Name:
 Year:
