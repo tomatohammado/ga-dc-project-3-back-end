@@ -1,5 +1,5 @@
 const express = require('express')
-// const movieController = require('')
+// const movieController = require('./controllers/movies')
 // const providerController = require('')
 const parser = require('body-parser')
 const cors = require('cors')
@@ -14,6 +14,9 @@ app.use(parser.json())
 
 // app.use('/movie', movieController)
 // app.use('/provider', providerController)
+
+const routesMovies = require('./config/routesMovies')
+app.use(routesMovies)
 
 app.listen(app.get('port'), () => {
   console.log('Listening on port 4000 (locally)')

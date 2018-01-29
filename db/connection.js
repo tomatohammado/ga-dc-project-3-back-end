@@ -5,10 +5,10 @@ const mongoose = require('mongoose')
 const mongoUri = 'mongodb://localhost/project-3'
 
 if (process.env.NODE_ENV === 'production') {
-  mongoose.connect(process.env.MLAB_URL, { useMongoClient: true })
+  mongoose.connect(process.env.MLAB_URL)
 } else {
-  mongoose.connect(mongoUri, { useMongoClient: true })
-    .then(connection => console.log(`connection established to db ${connection.db.databaseName}`))
+  mongoose.connect(mongoUri)
+    .then(connection => console.log(`connection established`))
     .catch(error => console.log('Connection Failed!', error))
 }
 
