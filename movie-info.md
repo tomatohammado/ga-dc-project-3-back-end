@@ -1,29 +1,29 @@
 # Movie Info
 
 ## #1
-Name: "Black Panther"
-Year: 2018
-Provider: None
+"Name": "Black Panther"
+"Year": 2018
+"Provider": None
 
 ## #2
-Name: "Titanic"
-Year: 1997
+"Name": "Titanic"
+"Year": 1997
 Provider: ["Amazon"]
 
 ## #3
-Name:
-Year:
-Provider: 
+"Name": "The Shack"
+"Year": 2017
+Provider: ["Amazon"]
 
 ## #4
-Name:
-Year:
-Provider: 
+"Name": "27 Dresses"
+"Year": 2008
+"Provider": ["Amazon"]
 
 ## #5
-Name: 
-Year:
-Provider: 
+"Name": "The Ugly Truth"
+"Year": 2009
+"Provider": ["Amazon"]
 
 ## #6
 Name: Talladega Nights
