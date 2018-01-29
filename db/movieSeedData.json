@@ -8,7 +8,7 @@
     {
         "name": "Titanic",
         "year": 1997,
-        "providers": ["YouTube", "Amazon" "Vudu", "Google Play", "iTunes"]
+        "providers": ["YouTube", "Amazon", "Vudu", "Google Play", "iTunes"]
     },
 
     {

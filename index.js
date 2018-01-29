@@ -18,6 +18,9 @@ app.use(parser.json())
 const routesMovies = require('./config/routesMovies')
 app.use(routesMovies)
 
+const routesProviders = require('./config/routesProviders')
+app.use(routesProviders)
+
 app.listen(app.get('port'), () => {
   console.log('Listening on port 4000 (locally)')
 })
