@@ -8,12 +8,12 @@
 ## #2
 "Name": "Titanic"
 "Year": 1997
-Provider: ["Amazon"]
+"Provider": ["Amazon"]
 
 ## #3
 "Name": "The Shack"
 "Year": 2017
-Provider: ["Amazon"]
+"Provider": ["Amazon"]
 
 ## #4
 "Name": "27 Dresses"
