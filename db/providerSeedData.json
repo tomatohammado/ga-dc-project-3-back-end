@@ -4,7 +4,7 @@
     },
 
     {
-        "name": "Amazon Prime"
+        "name": "Amazon"
     },
 
     {
@@ -16,7 +16,11 @@
     },
 
     {
-        "name": "YoutubeTV"
+        "name": "HBO Now"
+    },
+
+    {
+        "name": "Youtube"
     },
 
     {
@@ -28,6 +32,18 @@
     },
 
     {
-        "name": "AppleTV"
+        "name": "Crackle"
+    },
+
+    {
+        "name": "Vudu"
+    },
+
+    {
+        "name": "iTunes"
+    },
+
+    {
+        "name": "Google Play"
     }
 ]
