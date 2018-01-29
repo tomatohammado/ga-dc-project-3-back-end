@@ -36,16 +36,16 @@ Provider:
 "Provider": "Netflix"
 
 ## #8
-"Name": 
-"Year": 
-"Provider": 
+"Name": "The Lego Batman Movie"
+"Year": 2017
+"Provider": "HBO"
 
 ## #9
-"Name": 
-"Year": 
-"Provider": 
+"Name": "Superbad"
+"Year": 2007
+"Provider": "Hulu"
 
 ## #10
-"Name": 
-"Year": 
-"Provider":  
+"Name": "Fences"
+"Year": 2016
+"Provider": "Hulu"
