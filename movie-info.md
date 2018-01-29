@@ -26,25 +26,26 @@ Year:
 Provider: 
 
 ## #6
-Name: Talladega Nights
-Year: 2006
-Provider: Netflix
+"Name": "Talladega Nights"
+"Year": 2006
+"Provider": "Netflix"
+
 ## #7
-Name:
-Year:
-Provider: 
+"Name": "Star Wars: Rogue One"
+"Year": 2016
+"Provider": "Netflix"
 
 ## #8
-Name:
-Year:
-Provider: 
+"Name": 
+"Year": 
+"Provider": 
 
 ## #9
-Name:
-Year:
-Provider: 
+"Name": 
+"Year": 
+"Provider": 
 
 ## #10
-Name:
-Year:
-Provider: 
+"Name": 
+"Year": 
+"Provider":  
