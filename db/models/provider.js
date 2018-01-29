@@ -1,7 +1,7 @@
 const mongoose = require('../connection')
 
 const ProviderSchema = new mongoose.Schema({
-  // TODO
+  name: String
 })
 
 // mongoose.model('Provider', ProviderSchema)

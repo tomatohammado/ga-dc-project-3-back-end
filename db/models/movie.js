@@ -1,7 +1,9 @@
 const mongoose = require('../connection')
 
 const MovieSchema = new mongoose.Schema({
-  // TODO
+  name: String,
+  year: Number,
+  providers: []
 })
 
 // mongoose.model('Movie', MovieSchema)
