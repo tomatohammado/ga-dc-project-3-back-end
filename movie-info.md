@@ -6,9 +6,9 @@ Year: 2018
 Provider: None
 
 ## #2
-Name:
-Year:
-Provider: 
+Name: "Titanic"
+Year: 1997
+Provider: ["Amazon"]
 
 ## #3
 Name:
