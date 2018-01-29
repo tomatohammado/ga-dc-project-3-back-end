@@ -1,0 +1,19 @@
+{
+  "name": "ga-dc-project-3-back-end",
+  "version": "1.0.0",
+  "description": "back end for movie-searching application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomatohammado/ga-dc-project-3-back-end.git"
+  },
+  "author": "Hammad Malik, Savannah Cody, Wade Stewart, Kathy Lambert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomatohammado/ga-dc-project-3-back-end/issues"
+  },
+  "homepage": "https://github.com/tomatohammado/ga-dc-project-3-back-end#readme"
+}
