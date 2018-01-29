@@ -28,24 +28,24 @@ Provider: ["Amazon"]
 ## #6
 "Name": "Talladega Nights"
 "Year": 2006
-"Provider": "Netflix"
+"Provider": ["Netflix"]
 
 ## #7
 "Name": "Star Wars: Rogue One"
 "Year": 2016
-"Provider": "Netflix"
+"Provider": ["Netflix"]
 
 ## #8
 "Name": "The Lego Batman Movie"
 "Year": 2017
-"Provider": "HBO"
+"Provider": ["HBO"]
 
 ## #9
 "Name": "Superbad"
 "Year": 2007
-"Provider": "Hulu"
+"Provider": ["Hulu"]
 
 ## #10
 "Name": "Fences"
 "Year": 2016
-"Provider": "Hulu"
+"Provider": ["Hulu"]
