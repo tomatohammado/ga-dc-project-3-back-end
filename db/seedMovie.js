@@ -2,7 +2,7 @@ const Movie = require('./models/movie')
 const seedData = require('./movieSeedData.json')
 
 const Provider = require('./models/provider')
-let providersData
+let newProvidersData
 let newMoviesData
 let newProvidersArray
 let providerIndex
@@ -15,7 +15,7 @@ Movie.remove({})
       Provider.find({})
         .then(providers => {
           // store copy of all Providers (array)
-          providersData = providers.slice()
+          newProvidersData = providers.slice()
 
           Movie.find({})
             .then(movies => {
@@ -24,21 +24,27 @@ Movie.remove({})
                 // by going through each provider for a movie...
                 newProvidersArray = movie.providers.map(provider => {
                   // and for each provider that movie has...
-                  providerIndex = providersData.findIndex(element => {
+                  providerIndex = newProvidersData.findIndex(element => {
                     return element.name === provider
                   })
                   // if there is no matching provider, return empty string
-                  // otherwise, change the provider's value from a name to its matching _id
+                  // otherwise: change the provider's value from a name to its matching _id, and increment the totalMovies for that provider
                   if (providerIndex === -1) return ''
-                  return providersData[providerIndex]._id
+                  else {
+                    ++newProvidersData[providerIndex].totalMovies
+                    return newProvidersData[providerIndex]._id
+                  }
                 })
                 movie.providers = newProvidersArray.slice()
                 return movie
               })
-              // reseed the Movies collection
+              // reseed the Movies and Providers collections
               Movie.create(newMoviesData)
                 .then(_ => {
-                  process.exit()
+                  Provider.create(newProvidersData)
+                  .then(_ => {
+                    process.exit()
+                  })
                 })
             })
         })
