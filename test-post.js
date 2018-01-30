@@ -11,8 +11,8 @@ function postMovies (obj) {
   Provider.find({})
     .then(providers => {
       providersData = providers.slice()
-      console.log('providersData')
-      console.log(providersData)
+      // console.log('providersData')
+      // console.log(providersData)
       transformedProviders = cleanedProviders.map(provider => {
         providerIndex = providersData.findIndex(element => {
           return element.name === provider
@@ -26,7 +26,8 @@ function postMovies (obj) {
         }
       })
       newMovie.providers = transformedProviders.slice()
-
+      console.log(newMovie.providers)
+      console.log([...newMovie.providers])
       Movie.create(newMovie)
         .then(_ => process.exit())
     })
