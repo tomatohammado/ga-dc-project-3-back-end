@@ -27,9 +27,15 @@ function postMovies (obj) {
       })
       newMovie.providers = transformedProviders.slice()
       console.log(newMovie.providers)
-      console.log([...newMovie.providers])
-      Movie.create(newMovie)
-        .then(_ => process.exit())
+
+      Provider.update({
+        '_id': {$in: newMovie.providers}},
+        {$inc: {totalMovies: 1}},
+        {multi: true})
+        .then(_ => {
+          Movie.create(newMovie)
+            .then(_ => process.exit())
+        })
     })
 
   // Provider.update({$or: [...newMovie.providers]}, {$inc: {totalMovies: 1}})
@@ -51,8 +57,8 @@ function postMovies (obj) {
 
 postMovies({
   body: {
-    'name': 'Test-1',
-    'year': 2018,
-    'providers': 'Netflix, Starz'
+    'name': 'test-test-1',
+    'year': 1999,
+    'providers': 'Netflix, iTunes'
   }
 })
