@@ -11,7 +11,7 @@ function getMovies (req, res) {
 function postMovies (req, res) {
   let newMovie = Object.assign({}, req.body)
   let rawProviders = newMovie.providers
-  let cleanedProviders = rawProviders.replace(/\s+/g, '').split(',')
+  let cleanedProviders = rawProviders.split(',').map(provider => provider.trim())
   let providersData
   let providerIndex
   let transformedProviders
