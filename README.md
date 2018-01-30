@@ -13,7 +13,8 @@
 `/movies/`
 
 - [x] GET: returns all movies
-- [ ] POST: add a new movie to 'movies' collection in the database
+- [x] POST: add a new movie to 'movies' collection in the database
+  - also updates the appropriate totalMovies fields in the 'providers' collection
 
 `/movies/:id`
 
