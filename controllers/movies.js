@@ -1,5 +1,3 @@
-import { puts } from 'util'
-
 const Movie = require('../db/models/movie')
 
 function getMovies (req, res) {
