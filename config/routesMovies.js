@@ -5,10 +5,10 @@ const movieController = require('../controllers/movies')
 
 Router.route('/movies')
   .get(movieController.getMovies)
-  .post(movieController.postMovies)
+  .post(movieController.postMovie)
 
-// Router.route('/movies/:id')
-//   .put(movieController.putMovies)
-//   .delete(movieController.deleteMovies)
+Router.route('/movies/:id')
+  .put(movieController.putMovie)
+  .delete(movieController.deleteMovie)
 
 module.exports = Router
