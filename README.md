@@ -23,6 +23,6 @@
 
 ## MVP Checklist
 
-- [ ] implement mongoose populate method in controller
-- [ ] GET `/movies/:id`
+- [x] implement mongoose populate method in controller
+- [x] GET `/movies/:id`
 - [ ] CRUD for Providers model
