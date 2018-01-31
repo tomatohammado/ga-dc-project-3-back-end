@@ -31,7 +31,7 @@ function postMovie (req, res) {
         return providerData[providerIndex]._id
       })
       Movie.create(newMovie)
-        .then(movie => res.json(movie))
+        .then(_ => getMovies(req, res))
         .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
@@ -49,7 +49,7 @@ function putMovie (req, res) {
         return providerData[providerIndex]._id
       })
       Movie.findByIdAndUpdate(req.params.id, updateMovie, { new: true })
-        .then(movie => res.json(movie))
+        .then(_ => getMovies(req, res))
         .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
@@ -57,14 +57,8 @@ function putMovie (req, res) {
 
 function deleteMovie (req, res) {
   Movie.findByIdAndRemove(req.params.id)
-    .then(_ => {
-      Movie.find({})
-        .populate('providers')
-        .exec((err, movies) => {
-          if (err) console.log(err)
-          res.json(movies)
-        })
-    })
+    .then(_ => getMovies(req, res))
+    .catch(err => console.log(err))
 }
 
 module.exports = {
