@@ -1,5 +1,16 @@
+// import { transformProvidersArray } from '../utility'
+
 const Movie = require('../db/models/movie')
 const Provider = require('../db/models/provider')
+
+function transformProvidersArray (providerStringArray, providers) {
+  return providerStringArray.map(providerString => {
+    let providerIndex = providers.findIndex(providerObj => {
+      return providerObj.name === providerString
+    })
+    return providers[providerIndex]._id
+  })
+}
 
 /* I think I can get away with calling this at the end of each other method, to return all of the movies... */
 function getMovies (req, res) {
@@ -24,12 +35,7 @@ function postMovie (req, res) {
     .then(providers => {
       let providerData = providers.map(obj => Object.assign({}, obj._doc))
       let newMovie = Object.assign({}, req.body.data)
-      newMovie.providers = newMovie.providers.map(providerString => {
-        let providerIndex = providerData.findIndex(providerObj => {
-          return providerObj.name === providerString
-        })
-        return providerData[providerIndex]._id
-      })
+      newMovie.providers = transformProvidersArray(newMovie.providers, providerData)
       Movie.create(newMovie)
         .then(_ => getMovies(req, res))
         .catch(err => console.log(err))
