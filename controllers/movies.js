@@ -33,9 +33,8 @@ function postMovie (req, res) {
 
   Provider.find({})
     .then(providers => {
-      let providerData = providers.map(obj => Object.assign({}, obj._doc))
       let newMovie = Object.assign({}, req.body.data)
-      newMovie.providers = transformProvidersArray(newMovie.providers, providerData)
+      newMovie.providers = transformProvidersArray(newMovie.providers, providers)
       Movie.create(newMovie)
         .then(_ => getMovies(req, res))
         .catch(err => console.log(err))
@@ -46,14 +45,8 @@ function postMovie (req, res) {
 function putMovie (req, res) {
   Provider.find({})
     .then(providers => {
-      let providerData = providers.map(obj => Object.assign({}, obj._doc))
       let updateMovie = Object.assign({}, req.body.data)
-      updateMovie.providers = updateMovie.providers.map(providerString => {
-        let providerIndex = providerData.findIndex(providerObj => {
-          return providerObj.name === providerString
-        })
-        return providerData[providerIndex]._id
-      })
+      updateMovie.providers = transformProvidersArray(updateMovie.providers, providers)
       Movie.findByIdAndUpdate(req.params.id, updateMovie, { new: true })
         .then(_ => getMovies(req, res))
         .catch(err => console.log(err))
