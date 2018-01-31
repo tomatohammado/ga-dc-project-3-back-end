@@ -9,6 +9,6 @@ Router.route('/movies')
 
 Router.route('/movies/:id')
   .put(movieController.putMovie)
-//   .delete(movieController.deleteMovies)
+  .delete(movieController.deleteMovie)
 
 module.exports = Router

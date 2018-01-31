@@ -53,16 +53,17 @@ function putMovie (req, res) {
     })
 }
 
-// function deleteMovies (req, res) {
-//   Movie.delete(req.body.delete)
-//     .then(movies => {
-//       res.json(movies)
-//     })
-// }
+function deleteMovie (req, res) {
+  Movie.findByIdAndRemove(req.params.id)
+    .then(_ => {
+      Movie.find({})
+        .then(movies => res.json(movies))
+    })
+}
 
 module.exports = {
   getMovies,
   postMovie,
-  putMovie
-  // deleteMovies
+  putMovie,
+  deleteMovie
 }
