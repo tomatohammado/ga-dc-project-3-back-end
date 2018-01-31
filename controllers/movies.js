@@ -59,7 +59,11 @@ function deleteMovie (req, res) {
   Movie.findByIdAndRemove(req.params.id)
     .then(_ => {
       Movie.find({})
-        .then(movies => res.json(movies))
+        .populate('providers')
+        .exec((err, movies) => {
+          if (err) console.log(err)
+          res.json(movies)
+        })
     })
 }
 
