@@ -1,18 +1,9 @@
-// import { transformProvidersArray } from '../utility'
-
 const Movie = require('../db/models/movie')
 const Provider = require('../db/models/provider')
 
-function transformProvidersArray (providerStringArray, providers) {
-  return providerStringArray.map(providerString => {
-    let providerIndex = providers.findIndex(providerObj => {
-      return providerObj.name === providerString
-    })
-    return providers[providerIndex]._id
-  })
-}
+const utility = require('../utility')
+const transformProvidersArray = utility.transformProvidersArray
 
-/* I think I can get away with calling this at the end of each other method, to return all of the movies... */
 function getMovies (req, res) {
   Movie.find({})
     .populate('providers')
