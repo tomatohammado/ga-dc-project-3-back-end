@@ -1,6 +1,7 @@
 const Movie = require('../db/models/movie')
 const Provider = require('../db/models/provider')
 
+/* I think I can get away with calling this at the end of each other method, to return all of the movies... */
 function getMovies (req, res) {
   Movie.find({})
     .populate('providers')
@@ -36,12 +37,22 @@ function postMovie (req, res) {
     .catch(err => console.log(err))
 }
 
-//
 function putMovie (req, res) {
-  Movie.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then(movie => {
-      res.json(movie)
+  Provider.find({})
+    .then(providers => {
+      let providerData = providers.map(obj => Object.assign({}, obj._doc))
+      let updateMovie = Object.assign({}, req.body.data)
+      updateMovie.providers = updateMovie.providers.map(providerString => {
+        let providerIndex = providerData.findIndex(providerObj => {
+          return providerObj.name === providerString
+        })
+        return providerData[providerIndex]._id
+      })
+      Movie.findByIdAndUpdate(req.params.id, updateMovie, { new: true })
+        .then(movie => res.json(movie))
+        .catch(err => console.log(err))
     })
+    .catch(err => console.log(err))
 }
 
 function deleteMovie (req, res) {
