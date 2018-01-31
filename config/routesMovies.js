@@ -8,6 +8,7 @@ Router.route('/movies')
   .post(movieController.postMovie)
 
 Router.route('/movies/:id')
+  .get(movieController.getMovie)
   .put(movieController.putMovie)
   .delete(movieController.deleteMovie)
 

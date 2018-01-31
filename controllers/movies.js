@@ -33,6 +33,15 @@ function postMovie (req, res) {
     .catch(err => console.log(err))
 }
 
+function getMovie (req, res) {
+  Movie.findById(req.params.id)
+    .populate('providers')
+    .exec((err, movie) => {
+      if (err) console.log(err)
+      res.json(movie)
+    })
+}
+
 function putMovie (req, res) {
   Provider.find({})
     .then(providers => {
@@ -54,6 +63,7 @@ function deleteMovie (req, res) {
 module.exports = {
   getMovies,
   postMovie,
+  getMovie,
   putMovie,
   deleteMovie
 }
