@@ -8,7 +8,7 @@ function getMovies (req, res) {
     })
 }
 // the create functionality
-function postMovies (req, res) {
+function postMovie (req, res) {
   let newMovie = Object.assign({}, req.body)
   let rawProviders = newMovie.providers
   let cleanedProviders = rawProviders.split(',').map(provider => provider.trim())
@@ -46,12 +46,12 @@ function postMovies (req, res) {
 }
 
 // The update functionality
-// function putMovies (req, res) {
-//   Movie.update(req.params.id) // more code likely needed
-//     .then(movies => {
-//       res.json(movies)
-//     })
-// }
+function putMovie (req, res) {
+  Movie.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(movie => {
+      res.json(movie)
+    })
+}
 
 // function deleteMovies (req, res) {
 //   Movie.delete(req.body.delete)
@@ -62,7 +62,7 @@ function postMovies (req, res) {
 
 module.exports = {
   getMovies,
-  postMovies
-  // putMovies,
+  postMovie,
+  putMovie
   // deleteMovies
 }
