@@ -18,5 +18,11 @@
 
 `/movies/:id`
 
-- [ ] PUT: update a specific movie
-- [ ] DELETE: delete a specific movie
+- [x] PUT: update a specific movie
+- [x] DELETE: delete a specific movie
+
+## MVP Checklist
+
+- [x] implement mongoose populate method in controller
+- [x] GET `/movies/:id`
+- [ ] CRUD for Providers model

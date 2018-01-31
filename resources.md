@@ -11,3 +11,7 @@
 - [mongoose: update multiple documents](https://stackoverflow.com/q/6694507)
 
 - [codepen exploration: creating an array from a string](https://codepen.io/hm-/pen/qxEXox)
+
+- [mongoose: populate](http://mongoosejs.com/docs/populate.html)
+
+- [mongoose: populate Query method](http://mongoosejs.com/docs/api.html#query_Query-populate)

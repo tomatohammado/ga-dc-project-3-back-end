@@ -1,69 +1,69 @@
 const Movie = require('../db/models/movie')
 const Provider = require('../db/models/provider')
 
+const utility = require('../utility')
+const transformProvidersArray = utility.transformProvidersArray
+
 function getMovies (req, res) {
   Movie.find({})
-    .then(movies => {
+    .populate('providers')
+    .exec((err, movies) => {
+      if (err) console.log(err)
       res.json(movies)
     })
 }
-// the create functionality
+
+/* I think, currently, I'm working under the assumption that:
+// 1. for POST and PUT, the `providers` propery in the payload will be in the form of an array of strings corresponding to provider names, similar to the seed file
+// - thus, I will need similar code to transform the array from the String name references to the corresponding ObjectId values.
+// 2. the payload will actually be in `req.body.data`, not `req.body`
+*/
 function postMovie (req, res) {
-  let newMovie = Object.assign({}, req.body)
-  let rawProviders = newMovie.providers
-  let cleanedProviders = rawProviders.split(',').map(provider => provider.trim())
-  let providersData
-  let providerIndex
-  let transformedProviders
+  // Movie.create(req.body)
+  //   .then(movie => res.json(movie))
+
   Provider.find({})
     .then(providers => {
-      providersData = providers.slice()
-      transformedProviders = cleanedProviders.map(provider => {
-        providerIndex = providersData.findIndex(element => {
-          return element.name === provider
-        })
-        if (providerIndex === -1) return ''
-        else {
-          ++providersData[providerIndex].totalMovies
-          return providersData[providerIndex]._id
-        }
-      })
-      newMovie.providers = transformedProviders.slice()
-      console.log(newMovie.providers)
-
-      Provider.update({
-        '_id': {$in: newMovie.providers}},
-        {$inc: {totalMovies: 1}},
-        {multi: true})
-        .then(_ => {
-          Movie.create(newMovie)
-            .then(_ => {
-              Movie.find({})
-                .then(movies => res.json(movies))
-            })
-        })
+      let newMovie = Object.assign({}, req.body.data)
+      newMovie.providers = transformProvidersArray(newMovie.providers, providers)
+      Movie.create(newMovie)
+        .then(_ => getMovies(req, res))
+        .catch(err => console.log(err))
     })
+    .catch(err => console.log(err))
 }
 
-// The update functionality
-function putMovie (req, res) {
-  Movie.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then(movie => {
+function getMovie (req, res) {
+  Movie.findById(req.params.id)
+    .populate('providers')
+    .exec((err, movie) => {
+      if (err) console.log(err)
       res.json(movie)
     })
 }
 
+function putMovie (req, res) {
+  Provider.find({})
+    .then(providers => {
+      let updateMovie = Object.assign({}, req.body.data)
+      updateMovie.providers = transformProvidersArray(updateMovie.providers, providers)
+      Movie.findByIdAndUpdate(req.params.id, updateMovie, { new: true })
+        .then(_ => getMovies(req, res))
+        .catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
+}
+
 function deleteMovie (req, res) {
   Movie.findByIdAndRemove(req.params.id)
-    .then(_ => {
-      Movie.find({})
-        .then(movies => res.json(movies))
-    })
+    .then(_ => getMovies(req, res))
+    .catch(err => console.log(err))
 }
 
 module.exports = {
   getMovies,
   postMovie,
+  getMovie,
   putMovie,
   deleteMovie
 }
