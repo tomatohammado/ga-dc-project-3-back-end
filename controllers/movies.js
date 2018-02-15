@@ -13,20 +13,23 @@ function getMovies (req, res) {
     })
 }
 
+
+// I would rephrase this comment to reflect how the code expresses the thought process
+// rather than the thought process itself
+
 /* I think, currently, I'm working under the assumption that:
-// 1. for POST and PUT, the `providers` propery in the payload will be in the form of an array of strings corresponding to provider names, similar to the seed file
+// 1. for POST and PUT, the `providers` property in the payload will be in the form of an array of strings corresponding to provider names, similar to the seed file
 // - thus, I will need similar code to transform the array from the String name references to the corresponding ObjectId values.
 // 2. the payload will actually be in `req.body.data`, not `req.body`
 */
 function postMovie (req, res) {
-  // Movie.create(req.body)
-  //   .then(movie => res.json(movie))
-
-  Provider.find({})
+  Provider
+    .find({})
     .then(providers => {
       let newMovie = Object.assign({}, req.body.data)
       newMovie.providers = transformProvidersArray(newMovie.providers, providers)
-      Movie.create(newMovie)
+      Movie
+        .create(newMovie)
         .then(_ => getMovies(req, res))
         .catch(err => console.log(err))
     })
@@ -34,7 +37,8 @@ function postMovie (req, res) {
 }
 
 function getMovie (req, res) {
-  Movie.findById(req.params.id)
+  Movie
+    .findById(req.params.id)
     .populate('providers')
     .exec((err, movie) => {
       if (err) console.log(err)
@@ -43,11 +47,13 @@ function getMovie (req, res) {
 }
 
 function putMovie (req, res) {
-  Provider.find({})
+  Provider
+    .find({})
     .then(providers => {
       let updateMovie = Object.assign({}, req.body.data)
       updateMovie.providers = transformProvidersArray(updateMovie.providers, providers)
-      Movie.findByIdAndUpdate(req.params.id, updateMovie, { new: true })
+      Movie
+        .findByIdAndUpdate(req.params.id, updateMovie, { new: true })
         .then(_ => getMovies(req, res))
         .catch(err => console.log(err))
     })
@@ -55,7 +61,8 @@ function putMovie (req, res) {
 }
 
 function deleteMovie (req, res) {
-  Movie.findByIdAndRemove(req.params.id)
+  Movie
+    .findByIdAndRemove(req.params.id)
     .then(_ => getMovies(req, res))
     .catch(err => console.log(err))
 }

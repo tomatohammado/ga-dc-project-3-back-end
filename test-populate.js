@@ -1,3 +1,6 @@
+// I might move this into a test folder, as well
+
+
 const Provider = require('./db/models/provider')
 const Movie = require('./db/models/movie')
 
@@ -34,13 +37,18 @@ Provider.find({})
           return element.name === provider
         })
         // console.log(typeof providerData[providerIndex]._id)
+
+        // Alternate method for establishing 'type' in JavaScript
+        // console.log(providerData[providerIndex]._id.constructor)
         return providerData[providerIndex]._id
       })
       return movie
     })
     // console.log(newSeedDataMovie)
+    // You might want to chain a promise method on the query above and place the code below in a callback to the promise method, since its execution depends on a value 'calculated' above, `newSeedDataMovie`
     Movie.remove({})
       .then(_ => {
+
         Movie.create(newSeedDataMovie)
           .then(_ => {
             // console.log(movies)
