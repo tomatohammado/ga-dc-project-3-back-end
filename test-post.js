@@ -1,3 +1,5 @@
+// I might move this into a test folder
+
 const Movie = require('./db/models/movie')
 const Provider = require('./db/models/provider')
 

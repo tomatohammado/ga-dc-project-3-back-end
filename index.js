@@ -1,6 +1,4 @@
 const express = require('express')
-// const movieController = require('./controllers/movies')
-// const providerController = require('')
 const parser = require('body-parser')
 const cors = require('cors')
 
@@ -11,9 +9,6 @@ app.use(cors())
 app.set('port', process.env.PORT || 4000)
 
 app.use(parser.json())
-
-// app.use('/movie', movieController)
-// app.use('/provider', providerController)
 
 const routesMovies = require('./config/routesMovies')
 app.use(routesMovies)
